@@ -8,7 +8,7 @@ docker compose -f docker_compose.yml up --build -d
 docker ps
 bash ./init-mysql.sh
 
-## to *gracefully* pause
+## to *gracefully* pause2
 docker compose -f docker_compose.yml down
 
 ## to restart
