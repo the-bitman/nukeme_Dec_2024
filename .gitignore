@@ -1,0 +1,2 @@
+# Ignore all the docker files
+docker/db/data*
