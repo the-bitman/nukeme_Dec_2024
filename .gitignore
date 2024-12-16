@@ -1,2 +1,3 @@
 # Ignore all the docker files
 docker/db/data*
+docker_compose.yml
