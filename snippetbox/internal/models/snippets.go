@@ -6,8 +6,6 @@ import (
 	"time"
 )
 
-var ErrNoRecord = errors.New("models: no matching record found")
-
 type Snippet struct {
 	ID      int
 	Title   string
@@ -22,7 +20,6 @@ type SnippetModel struct {
 }
 
 // This will insert a new snippet into the database.
-
 func (m *SnippetModel) Insert(title string, content string, expires int) (int, error) {
 	// Write the SQL statement we want to execute. I've split it over two lines
 	// for readability (which is why it's surrounded with backquotes instead
