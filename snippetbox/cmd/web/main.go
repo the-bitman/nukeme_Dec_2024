@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"flag"
+	"html/template"
 	"log/slog"
 	"net/http"
 	"os"
@@ -15,14 +16,14 @@ import (
 // Add a snippets field to the application struct. This will allow us to
 // make the SnippetModel object available to our handlers.
 type application struct {
-	logger   *slog.Logger
-	snippets *models.SnippetModel
+	logger        *slog.Logger
+	snippets      *models.SnippetModel
+	templateCache map[string]*template.Template
 }
 
 func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
 	dsn := flag.String("dsn", "web:pass@tcp(127.0.0.1:6603)/snippetbox?parseTime=true", "MySQL data source name")
-
 	flag.Parse()
 
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
@@ -32,14 +33,19 @@ func main() {
 		logger.Error(err.Error())
 		os.Exit(1)
 	}
-
 	defer db.Close()
 
-	// Initialize a models.SnippetModel instance containing the connection pool
-	// and add it to the application dependencies.
+	// Initialize a new template cache...
+	templateCache, err := newTemplateCache()
+	if err != nil {
+		logger.Error(err.Error())
+		os.Exit(1)
+	}
+
 	app := &application{
-		logger:   logger,
-		snippets: &models.SnippetModel{DB: db},
+		logger:        logger,
+		snippets:      &models.SnippetModel{DB: db},
+		templateCache: templateCache,
 	}
 
 	logger.Info("starting server", "addr", *addr)
