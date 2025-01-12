@@ -2,9 +2,7 @@ package main
 
 import "net/http"
 
-// The routes() method returns a servemux containing our application routes.
-// Update the signature for the routes() method so that it returns a
-// http.Handler instead of *http.ServeMux.
+// The routes() method NOW returns a http.Handler instead of *http.ServeMux
 func (app *application) routes() http.Handler {
 	mux := http.NewServeMux()
 
@@ -16,8 +14,6 @@ func (app *application) routes() http.Handler {
 	mux.HandleFunc("GET /snippet/create", app.snippetCreate)
 	mux.HandleFunc("POST /snippet/create", app.snippetCreatePost)
 
-	// Pass the servemux as the 'next' parameter to the commonHeaders middleware.
-	// Because commonHeaders is just a function, and the function returns a
-	// http.Handler we don't need to do anything else.
-	return commonHeaders(mux)
+	// Wrap the existing chain with the logRequest middleware.
+	return app.logRequest(commonHeaders(mux))
 }
