@@ -23,4 +23,5 @@ go run ./cmd/web >>/tmp/web.log
 ## see it run
 http://localhost:4000/
 
-## resume book at chapter 5.5 common dynamic data
+## resume book at chapter 6.4 Panic Recovery
+
