@@ -14,7 +14,7 @@ docker compose -f docker_compose.yml down
 ## to restart
 docker compose -f docker_compose.yml up --build -d
 
-## this is how to kick off the snippetbox html server app
+## this is how to kick off the snippetbox html server app ( from snippetbox dir )
 
 go run ./cmd/web
 go run ./cmd/web -help
@@ -23,5 +23,5 @@ go run ./cmd/web >>/tmp/web.log
 ## see it run
 http://localhost:4000/
 
-## resume book at chapter 6.4 Panic Recovery
+## resume book at chapter 7 Processing Forms
 
