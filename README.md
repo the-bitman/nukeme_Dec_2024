@@ -23,5 +23,5 @@ go run ./cmd/web >>/tmp/web.log
 ## see it run
 http://localhost:4000/
 
-## resume book at chapter 7 Processing Forms
+## resume book at chapter 7.5 Processing Forms
 
