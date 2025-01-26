@@ -21,12 +21,12 @@ var functions = template.FuncMap{
 	"humanDate": humanDate,
 }
 
-// Add a CurrentYear field to the templateData struct.
 type templateData struct {
 	CurrentYear int
 	Snippet     models.Snippet
 	Snippets    []models.Snippet
 	Form        any
+	Flash       string // Add a Flash field to the templateData struct.
 }
 
 func newTemplateCache() (map[string]*template.Template, error) {
