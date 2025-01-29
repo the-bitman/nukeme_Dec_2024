@@ -26,6 +26,4 @@ https://localhost:4000/
 # this generated self signed TLS certs ( cert.pem and key.pem )
 go run "C:\Program Files\Go\src\crypto\tls\generate_cert.go" --rsa-bits=2048 --host=localhost
 
-
-## resume book at chapter 10.4
-
+## resume book at chapter 11
