@@ -21,8 +21,11 @@ go run ./cmd/web -help
 go run ./cmd/web >>/tmp/web.log
 
 ## see it run
-http://localhost:4000/
+https://localhost:4000/
 
-## resume book at chapter 9
-
+# this generated self signed TLS certs ( cert.pem and key.pem )
 go run "C:\Program Files\Go\src\crypto\tls\generate_cert.go" --rsa-bits=2048 --host=localhost
+
+
+## resume book at chapter 10.4
+
